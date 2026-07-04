@@ -20,7 +20,7 @@ import { spawnOrchestrator } from "../lib/spawn-orchestrator";
 import { restartProjectOrchestrator } from "../lib/restart-orchestrator";
 import { prDiffSummary, sessionPRDisplaySummaries } from "../lib/pr-display";
 import { cn } from "../lib/utils";
-import { PRAttentionPanel, PRStatusStrip } from "./PRSummaryDisplay";
+import { PRSummaryParts } from "./PRSummaryDisplay";
 import { useUiStore } from "../stores/ui-store";
 
 type SessionsBoardProps = {
@@ -375,8 +375,7 @@ function BoardPRSummary({ className, pr }: { className?: string; pr: SessionPRSu
 				PR #{pr.number} · {pr.state}
 			</span>
 			{diffSummary ? <span className="truncate">{diffSummary}</span> : null}
-			<PRStatusStrip pr={pr} />
-			<PRAttentionPanel className="mt-1.5 pt-1.5" maxItems={2} pr={pr} />
+			<PRSummaryParts maxLinks={2} pr={pr} />
 		</div>
 	);
 }
